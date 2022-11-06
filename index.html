@@ -10,20 +10,23 @@
     <title>Lista de tarefas</title>
 </head>
 <body>
-    <!-- <div class="topo">
-        <img src="./imagens/imagemTitle2.png" alt="Lista de Tarefas"
-         width="100" height="100">
-    </div> -->
+    
     <div class="pagina-tarefas">
-    <h1 class="topo">Listinha de tarefas</h1>
-    <div class="menu-tarefas">
-        <div class="campo-tarefa">
-            <input type="text" placeholder="Digite uma tarefa" id="nome-tarefa" />
-            <button onclick="adicionarTarefa(); limparCampo()">+</button>
+        <div class="menu-tarefas">
+            <h1 class="topo">Listinha de tarefas</h1>
+            <div class="campo-tarefa">
+                <input type="text" placeholder="Digite uma tarefa" id="nome-tarefa" onkeypress="teclaAdicionarTarefa(event)"/>
+                <button class="botao" onclick="adicionarTarefa(); limparCampo()">
+                    <img src="./imagens/lapis.png" alt="Lápis" width="19" height="19">
+                </button>
+            </div>
+            <div id="lista-tarefas" class="lista-nomes"></div>
         </div>
-        <div id="lista-tarefas" class="listaTarefas"></div>
     </div>
-</div>
+    <footer>
+        <div class="espaco"></div>
+        <div class="rodape"><p class="assinatura">Desenvolvido por Natacha Carvalho</p></div>
+    </footer>
 </body>
 </html>
 

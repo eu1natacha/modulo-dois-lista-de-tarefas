@@ -1,9 +1,12 @@
 let id = 0
 
-const tarefa = (id, novaTarefa) => `<div>
-<p id='${id}'>${novaTarefa}</p>
-<input type="checkbox" onchange="marcarTarefa(${id})"/>
-<button onclick="removerTarefa(${id})">Excluir</button>
+const tarefa = (id, novaTarefa) => 
+`<div>
+    <input type="checkbox" class="mesma-linha" onchange="marcarTarefa(${id})"/>
+    <p id='${id}' class="mesma-linha">${novaTarefa}</p>
+    <button class="mesma-linha; botao" onclick="removerTarefa(${id})">
+    <img src="./imagens/borracha.png" alt="borracha" width="19" height="19">
+    </button>
 </div>`
 
 function limparCampo() {
@@ -43,6 +46,13 @@ const validarTarefa = (novaTarefa) => {
         })
     
         return tarefaExistente
+    }
+}
+
+function teclaAdicionarTarefa(event) {
+    if (event.keyCode == 13) {
+        adicionarTarefa();
+        limparCampo();
     }
 }
 

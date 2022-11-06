@@ -1,27 +1,53 @@
+body { 
+    background: url('./imagens/backgroundAlt4.png')  repeat 0 0;
+    display: flex;
+    flex-direction: column;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'bradley hand', cursive;
 }
 p, div {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: bold;
+    font-family: 'bradley hand', cursive;
+    color:rgb(8, 8, 146);
 }
 
 h1 { 
     text-shadow: 1px 1px 1px #ccc;
 }
-.lista-tarefas { 
-    box-shadow: 0 0 1em 1em #ccc;
+
+.espaco {
+    min-height: 50vh;
 }
 
-body { 
-    background: url('./imagens/backgroundAlt4.png')  repeat 0 0;
+.rodape {
+    justify-content:center;
+    align-items: center;
+    text-align:center;
+    padding: 20px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 50vh;
+}
+
+.assinatura {
+    color:#000;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:bolder;
+    font-style:italic;
 }
 
 .pagina-tarefas {
     margin: auto;
     width: 60%;
-    border: 3px solid cadetblue;
-    padding: 10px;
+    border: 3px solid;
+    padding: 0px;
+    resize: both;
+    background: linear-gradient(to top, rgba(#cffffe, 0.3), rgba(#f9f7d9, 0.3), rgba(#fce2ce, 0.3), rgba(#ffc1f3, 0.3));
+    border-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23cffffe' /%3E%3Cstop offset='25%25' stop-color='%23f9f7d9' /%3E%3Cstop offset='50%25' stop-color='%23fce2ce' /%3E%3Cstop offset='100%25' stop-color='%23ffc1f3' /%3E%3C/linearGradient%3E %3Cpath d='M1.5 1.5 l97 0l0 97l-97 0 l0 -97' stroke-linecap='square' stroke='url(%23g)' stroke-width='3'/%3E %3C/svg%3E") 1;
+    box-shadow: 3px 15px 8px -10px rgba(0, 0, 0, 0.3);
+    flex:1;
 }
 
 .menu-tarefas {
@@ -32,21 +58,70 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 20px;
 }
 
-.listaTarefas {
+.lista-tarefas { 
+    box-shadow: 0 0 1em 1em #ccc;
+    
+}
+
+.lista-nomes {
     justify-content: center;
     align-items: center;
     text-align:center;
 }
 
+.botao {
+    outline: 0;
+    grid-gap: 10px;
+    align-items: center;
+    background-color:#fce2ce;
+    color: #000;
+    border: 1px solid #fce2ce;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    flex-shrink: 0;
+    font-size: 16px;
+    gap: 8px;
+    justify-content: center;
+    line-height: 1.5;
+    overflow: hidden;
+    padding: 5px 5px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition: all .14s ease-out;
+    white-space: nowrap;
+}
+
 .topo {
     margin: auto;
     width: 80%;
-    border: 3px solid white;
     padding: 10px;
-    background-color: white;
     justify-content: center;
     align-items: center;
     text-align: center;
+    color:rgb(8, 8, 146)
+}
+
+.mesma-linha {
+    display: inline-block
+}
+
+input[type=text]{
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+     border-radius: 20px;
+     border: 1px solid #2d9fd9;
+     color: #a0d18c;
+     width: 250px;
+     height: 30px;
+     padding-left: 10px;
+    }
+    
+input[type=text]:focus {
+     outline: none;
+     border: 1px solid #fce2ce;
+     color: rgb(8, 8, 146);
 }
