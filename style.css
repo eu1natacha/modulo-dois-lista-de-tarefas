@@ -1,0 +1,52 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'bradley hand', cursive;
+}
+p, div {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
+h1 { 
+    text-shadow: 1px 1px 1px #ccc;
+}
+.lista-tarefas { 
+    box-shadow: 0 0 1em 1em #ccc;
+}
+
+body { 
+    background: url('./imagens/backgroundAlt4.png')  repeat 0 0;
+}
+
+.pagina-tarefas {
+    margin: auto;
+    width: 60%;
+    border: 3px solid cadetblue;
+    padding: 10px;
+}
+
+.menu-tarefas {
+    background: url('./imagens/backgroundMenu1.png')  repeat 0 0;
+}
+
+.campo-tarefa {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.listaTarefas {
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+}
+
+.topo {
+    margin: auto;
+    width: 80%;
+    border: 3px solid white;
+    padding: 10px;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

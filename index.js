@@ -1,65 +1,77 @@
 let id = 0
 
-const tarefa = (id, novaTarefa) => `<div id='${id}'>
-                                       <p> ${novaTarefa} </p>
-                                       <input type="checkbox"/>
-                                    </div>`
+const tarefa = (id, novaTarefa) => `<div>
+<p id='${id}'>${novaTarefa}</p>
+<input type="checkbox" onchange="marcarTarefa(${id})"/>
+<button onclick="removerTarefa(${id})">Excluir</button>
+</div>`
 
-function adicionarTarefa(){
-    id++;
-    const novaTarefa = document.getElementById('nome-tarefa').value
-    document.querySelector('#lista-tarefas').innerHTML += tarefa(id, novaTarefa) 
-// O conteudo HTML do elemento de id lista-tarefas do document agrega o valor da variavel tarefa
+function limparCampo() {
+    document.getElementById("nome-tarefa").value="";
 }
 
+const marcarTarefa = (id) => {
+    const strike = document.getElementById(`strike${id}`)
+    if(strike){
+        document.getElementById(id).innerHTML = strike.innerHTML
+    } else {
+        const tarefaConcluida = document.getElementById(id).innerHTML
+        document.getElementById(id).innerHTML = `<strike id='strike${id}'>${tarefaConcluida}</strike`
+    }
+}
 
+function exibirLista() {
+    const tarefas = JSON.parse(localStorage.getItem('lista-tarefas'))
+    if(tarefas){
+        tarefas.forEach(tarefaListada => {
+            id++
+            document.querySelector('#lista-tarefas').innerHTML += tarefa(id, tarefaListada)
+        })
+    }
+}
 
+const validarTarefa = (novaTarefa) => {
+    let tarefaExistente = false
+    const listaTarefas = JSON.parse(localStorage.getItem('lista-tarefas'))
 
+    if(listaTarefas){
+        listaTarefas.map(tarefa => {
+            if(tarefa === novaTarefa){
+                tarefaExistente = true
+                alert('Tarefa já existente')
+            }
+        })
+    
+        return tarefaExistente
+    }
+}
 
+function adicionarTarefa(){
+    id++
+    const novaTarefa = document.getElementById('nome-tarefa').value
+    const listaTarefas = localStorage.getItem('lista-tarefas')
+    if(validarTarefa(novaTarefa)){
+        return
+    }
 
+    document.querySelector('#lista-tarefas').innerHTML += tarefa(id, novaTarefa)
 
+    if(listaTarefas){
+        const novaLista = JSON.parse(listaTarefas)
+        novaLista.push(novaTarefa)
+        localStorage.setItem('lista-tarefas', JSON.stringify(novaLista))
+    } else {
+        localStorage.setItem('lista-tarefas', JSON.stringify([novaTarefa]))
+    }
+}
 
+const removerTarefa = (id) => {
+    const tarefaDeletada = document.getElementById(id).innerHTML
+    const listaTarefas = JSON.parse(localStorage.getItem('lista-tarefas'))
+    const novaListaTarefa = listaTarefas.filter(tarefa => tarefa !== tarefaDeletada)
+    localStorage.setItem('lista-tarefas', JSON.stringify(novaListaTarefa))
+    document.querySelector('#lista-tarefas').innerHTML = ''
+    exibirLista()
+}
 
-
-
-
-
-
-
-
-
-
-
-// Rascunho de função, document.createElement, querySelector,
-// element.innerHTML, id, appendChild
-
-// function adicionarTarefa(){
-//     id++
-//     const tarefa = document.createElement ('div')
-//     const nomeTarefa = document.createElement('p')
-//     const checkbox = document.createElement('input')
-//     tarefa.innerHTML = 'Tarefa'
-//     checkbox.type = 'checkbox'
-//     tarefa.id = id
-//     tarefa.appendChild(nomeTarefa)
-//     tarefa.appendChild(checkbox)
-//     document.querySelector('#lista-tarefas').appendChild(tarefa)
-//     // É anexado o elemento tarefa como último filho de
-//     // qualquer elemento do document que tenha #id "id-tarefa"
-// }
-
-
-// Rascunho de String concatenada x Template String
-
-// String concatenada com variável
-// 'Bem-vinda ' + nome
-
-// Template string
-// `Bem-vinda ${nome}`
-
-// Com template string é possível escrever HTML dentro de JS:
-// const exemplo = `<div><p>exemplo</p></div>`
-// document.querySelector('#id-exemplo').innerHTML = exemplo
-
-// const nomeDaNatacha = `<div><p>Natacha Carvalho</p></div>`
-// document.querySelector('#127173').innerHTML = nomeDaNatacha
+exibirLista()
